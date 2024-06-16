@@ -6,6 +6,7 @@ import "../assets/styles.css";
 const Books = () => {
   const [books, SetBooks] = useState([]);
 
+
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
@@ -18,6 +19,16 @@ const Books = () => {
     fetchAllBooks();
   }, []);
 
+  const handleDelete = async (id) =>{
+    try{
+        await axios.delete("http://localhost:8000/books/"+id);
+        window.location.reload()
+    }catch(err){
+        console.log(err)
+    }
+  }
+
+
   return (
     <div>
       <h1>Books</h1>
@@ -28,6 +39,8 @@ const Books = () => {
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
             <span>{book.price}</span>
+            <button className="delete" onClick={()=>handleDelete(book.id)}>delete</button>
+            <button className="update"><Link to={`/update/${book.id}`}>update</Link></button> 
           </div>
         ))}
       </div>

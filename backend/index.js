@@ -57,6 +57,35 @@ app.post("/books", (req, res) => {
   });
 });
 
+
+app.delete("/books/:id",(req,res)=>{
+    const bookId = req.params.id;
+    const q = "DELETE FROM books WHERE id= ?"
+
+    db.query(q, [bookId],(err, data) =>{
+        if (err) return res.json(err); 
+        return res.status(201).json("Book deleted successfully");
+    })
+})
+
+app.put("/books/:id", (req, res) => {
+  const bookId = req.params.id;
+  const q = "UPDATE books SET `title` = ?, `desc` = ?, `price` = ?, `cover` = ? WHERE id = ? ";
+
+   const values = [
+     req.body.title,
+     req.body.desc,
+     req.body.price,
+     req.body.cover,
+   ];
+
+  db.query(q, [...values,bookId], (err, data) => {
+    if (err) return res.json(err);
+    return res.status(201).json("Book updated successfully");
+  });
+});
+
+
 // Start the server
 app.listen(8000, () => {
   console.log("Connected to backend on port 8000!"); //"start": "nodemon index.js" in package.json file automatically starts "npm start"
