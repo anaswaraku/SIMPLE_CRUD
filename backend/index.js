@@ -1,10 +1,8 @@
 import express from "express";// "type": "module",in package.json else error occur"SyntaxError: Cannot use import statement outside a module" . To manually run "node index.js"
 import mysql from "mysql";
+import cors from "cors";
 
 const app = express();
-
-// Middleware to parse JSON request bodies
-app.use(express.json());
 
 // Create MySQL connection
 const db = mysql.createConnection({
@@ -15,7 +13,7 @@ const db = mysql.createConnection({
 });
 
 app.use(express.json());//accepts from json file
-
+app.use(cors());
 
 // Connect to MySQL
 db.connect((err) => {
@@ -44,17 +42,22 @@ app.get("/books", (req, res) => {
 // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password'; in cmd for auth problem
 app.post("/books", (req, res) => {
   //use postman API to check
-  const { title, desc, cover } = req.body;
-  const q = "INSERT INTO books (`title`, `desc`, `cover`) VALUES (?, ?, ?)";
-  const values = [req.body.title, req.body.desc, req.body.cover];
+  const { title, desc, price,cover } = req.body;
+  const q = "INSERT INTO books (`title`, `desc`, `price`, `cover`) VALUES (?,?,?,?)";
+  const values = [
+    req.body.title, 
+    req.body.desc, 
+    req.body.price, 
+    req.body.cover,
+];
 
   db.query(q, values, (err, data) => {
-    if (err) return res.status(500).json(err); 
+    if (err) return res.json(err); 
     return res.status(201).json("Book added successfully");
   });
 });
 
 // Start the server
-app.listen(3000, () => {
-  console.log("Connected to backend on port 3000!"); //"start": "nodemon index.js" in package.json file automatically starts "npm start"
+app.listen(8000, () => {
+  console.log("Connected to backend on port 8000!"); //"start": "nodemon index.js" in package.json file automatically starts "npm start"
 });

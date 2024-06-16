@@ -1,0 +1,153 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.book {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+.book img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.book h2 {
+  font-size: 1.25em;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+
+.book p {
+  font-size: 1em;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.book span {
+  font-size: 1.25em;
+  color: #007bff;
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+button a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+/* styles.css */
+
+/* General Body Style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Form Container */
+.form {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading Style */
+.form h1 {
+  color: #343a40;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+/* Input Field Style */
+.form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Input Placeholder Color */
+.form input::placeholder {
+  color: #6c757d;
+}
+
+/* Button Style */
+.form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Button Hover Effect */
+.form button:hover {
+  background-color: #0056b3;
+}
